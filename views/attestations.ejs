@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Auth</title>
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Font-->
+  
+ 
+    <style>   
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+</head>
+
+<body>
+  <table style="border:1px solid black;">
+    <tr>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>email</th>
+      <th>address</th>
+      <th>Qr Code</th>
+    </tr>
+    <% for(var i=0 ;i<data.length;i++){  %>
+    <tr>
+      <td><%=data[i].num_police %></td>
+      <td><%=data[i].date_echeance %></td>
+      <td><%=data[i].date_effet %></td>
+      <td><%=data[i].date_souscription %></td>
+      <td><%=data[i].prime_rc %></td>
+      <td><img src="<%= data[i].qr_code %>" alt="QR Code" id="qrCodeimg" onclick=""/></td>
+    </tr>
+
+    <%}%>
+  </table>
+
+
+  <form action="/compagnies" method="post">
+    <input type="submit" value="submit">
+  </form>
+  
+</body>
+
+</html>

@@ -17,7 +17,7 @@ const getAccessToken = (req, res, next) => {
         email: email + '',
         password: password + '',
     };
-    console.log(data);
+    console.log("daaataa "+JSON.stringify(data));
     let url = 'http://localhost:8080/auth';
     fetch(url, {
         method: 'post',

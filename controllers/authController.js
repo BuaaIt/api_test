@@ -24,11 +24,17 @@ const auth = (req, res, next) => {
         result.json().then((res1) => {
             console.log("result 1 "+JSON.stringify(res1));
             let data = res1.result;
-
-            res.render('attestations', {
-                layout: false,
-                data
-            });
+            let dataStatus=res1.status;
+            console.log("status    => "+dataStatus)
+            if(dataStatus.startsWith('400')){
+                res.send(' ERR  ===>  '+res1.status_message);
+            }else{
+                res.render('attestations', {
+                    layout: false,
+                    data
+                });
+            }
+            
         });
     });
 

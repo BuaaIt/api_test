@@ -20,7 +20,7 @@ const auth = (req, res, next) => {
         headers: { 'Content-Type': 'application/json', 'authorization': 'Bearer ' + accessToken }
     }).then((result) => {
         //res.send(result);
-        console.log('result ' + JSON.stringify(result));
+       // console.log('result ' + JSON.stringify(result));
         result.json().then((res1) => {
             console.log("result 1 "+JSON.stringify(res1));
             let data = res1.result;
@@ -29,10 +29,15 @@ const auth = (req, res, next) => {
             if(dataStatus.startsWith('400')){
                 res.send(' ERR  ===>  '+res1.status_message);
             }else{
-                res.render('attestations', {
-                    layout: false,
-                    data
-                });
+                if(dataStatus.startsWith('200')){
+                    res.render('attestations', {
+                        layout: false,
+                        data
+                    });
+                }else{
+                    res.send(' ERR  ===>  unkown');  
+                }
+             
             }
             
         });
